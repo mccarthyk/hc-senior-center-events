@@ -1,31 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+
+    <div class="nav justify-content-center">
+      <router-link to="/" class="nav-link">Senior Center Events</router-link>
+      <router-link to="/special" class="nav-link">Special Events</router-link>
+      <router-link to="/ongoing" class="nav-link">Ongoing Events</router-link>
     </div>
-    <router-view/>
+
+    <router-view :key="$route.fullPath "/>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+import router from './router'
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+export default {
+  router
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>

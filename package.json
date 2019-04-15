@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name HcSeniorCenterEvents --formats umd,umd-min",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@hcflgov/vue-google-sheet-model": "^1.0.0",
     "core-js": "^2.6.5",
+    "lodash.uniqby": "^4.7.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3"
   },

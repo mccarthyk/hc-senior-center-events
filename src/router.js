@@ -1,8 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Home from './views/Home.vue'
+import Index from './views/Index.vue'
+import Show from './views/Show.vue'
 
 Vue.use(Router)
+
+let specialSheetId = '1zStRVKbrYF3qa_ORDtVc4Ov--ihE1IQLFKAiM62914A'
+let ongoingSheetId = '1ljyQ1bjC9PhuM3H__ELYBCIuY_fab9SU3IO7M8O8hW8'
 
 export default new Router({
   routes: [
@@ -12,12 +18,28 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
+      path: '/special',
+      name: 'Special',
+      component: Index,
+      props: { sheetId: specialSheetId }
+    },
+    {
+      path: '/ongoing',
+      name: 'Ongoing',
+      component: Index,
+      props: { sheetId: ongoingSheetId }
+    },
+    {
+      path: '/special/:id',
+      name: 'Special Events',
+      component: Show,
+      props: { sheetId: specialSheetId }
+    },
+    {
+      path: '/ongoing/:id',
+      name: 'Ongoing Events',
+      component: Show,
+      props: { sheetId: ongoingSheetId }
+    },
   ]
 })

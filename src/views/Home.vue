@@ -1,18 +1,19 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="row my-5">
+
+
+    <div class="col-md-6">
+      <router-link to="/special" class="btn btn-lg btn-block btn-secondar btn-outline-primary py-5">Special Events</router-link>
+    </div>
+    <div class="col-md-6">
+      <router-link to="/ongoing" class="btn btn-lg btn-block btn-secondar btn-outline-primary py-5">Ongoing Events</router-link>
+    </div>
+
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
+  name: 'home'
 }
 </script>
