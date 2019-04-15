@@ -11,6 +11,7 @@ let specialSheetId = '1zStRVKbrYF3qa_ORDtVc4Ov--ihE1IQLFKAiM62914A'
 let ongoingSheetId = '1ljyQ1bjC9PhuM3H__ELYBCIuY_fab9SU3IO7M8O8hW8'
 
 export default new Router({
+  linkExactActiveClass: 'active',
   routes: [
     {
       path: '/',
