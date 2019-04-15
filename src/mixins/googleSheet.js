@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     fields () {
-      return ['guid','center','day','starttime','endtime','activity','description']
+      return ['guid','center','day','starttime','endtime','endtime','activity','description']
     }
   }
 }

@@ -5464,7 +5464,7 @@ var GoogleSheetModel_umd_min_default = /*#__PURE__*/__webpack_require__.n(Google
   },
   computed: {
     fields: function fields() {
-      return ['guid', 'center', 'day', 'starttime', 'endtime', 'activity', 'description'];
+      return ['guid', 'center', 'day', 'starttime', 'endtime', 'endtime', 'activity', 'description'];
     }
   }
 });
@@ -5514,16 +5514,18 @@ var Index_component = normalizeComponent(
 )
 
 /* harmony default export */ var Index = (Index_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6a83156a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/Show.vue?vue&type=template&id=738a8c36&lang=html&
-var Showvue_type_template_id_738a8c36_lang_html_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('g-sheet',{attrs:{"sheet-id":_vm.sheetId,"fields":_vm.fields},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6a83156a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/Show.vue?vue&type=template&id=7b327c82&lang=html&
+var Showvue_type_template_id_7b327c82_lang_html_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('g-sheet',{attrs:{"sheet-id":_vm.sheetId,"fields":_vm.fields},scopedSlots:_vm._u([{key:"default",fn:function(ref){
 var gsheet = ref.gsheet;
-return [_c('h3',{staticClass:"text-capitalize"},[(_vm.filteredInstances(gsheet.instances).length)?[_vm._v("\n      "+_vm._s(_vm.filteredInstances(gsheet.instances)[0].center)+"\n    ")]:_vm._e(),_vm._v("\n\n    "+_vm._s(_vm.$route.name)+"\n  ")],2),_c('div',{staticClass:"table-responsive"},[_c('table',{staticClass:"table table-striped table-sm table-bordered"},[_c('thead',[_c('tr',[_c('th',[_vm._v("Day")]),_c('th',[_vm._v("Start Time")]),_c('th',[_vm._v("Activity")]),_c('th',[_vm._v("Description")])])]),_c('tbody',_vm._l((_vm.filteredInstances(gsheet.instances)),function(model,i){return _c('tr',{key:i},[_c('td',{staticClass:"text-nowrap"},[_c('strong',[_vm._v(_vm._s(model.day))])]),_c('td',{staticClass:"text-nowrap"},[_vm._v(_vm._s(model.starttime))]),_c('td',[_vm._v(_vm._s(model.activity))]),_c('td',[_vm._v(_vm._s(model.description))])])}),0)])]),_c('em',[_vm._v("Last Updated: "),_c('small',[_vm._v(_vm._s(gsheet.updated))])])]}}])})}
-var Showvue_type_template_id_738a8c36_lang_html_staticRenderFns = []
+return [_c('h3',{staticClass:"text-capitalize"},[(_vm.filteredInstances(gsheet.instances).length)?[_vm._v("\n      "+_vm._s(_vm.filteredInstances(gsheet.instances)[0].center)+"\n    ")]:_vm._e(),_vm._v("\n\n    "+_vm._s(_vm.$route.name)+"\n  ")],2),_c('div',{staticClass:"table-responsive"},[_c('table',{staticClass:"table table-striped table-sm table-bordered"},[_c('thead',[_c('tr',[_c('th',[_vm._v("Day")]),_c('th',[_vm._v("Start Time")]),_c('th',[_vm._v("End Time")]),_c('th',[_vm._v("Activity")]),_c('th',[_vm._v("Description")])])]),_c('tbody',_vm._l((_vm.filteredInstances(gsheet.instances)),function(model,i){return _c('tr',{key:i},[_c('td',{staticClass:"text-nowrap"},[_c('strong',[_vm._v(_vm._s(model.day))])]),_c('td',{staticClass:"text-nowrap"},[_vm._v(_vm._s(model.starttime))]),_c('td',{staticClass:"text-nowrap"},[_vm._v(_vm._s(model.endtime))]),_c('td',[_vm._v(_vm._s(model.activity))]),_c('td',[_vm._v(_vm._s(model.description))])])}),0)])]),_c('em',[_vm._v("Last Updated: "),_c('small',[_vm._v(_vm._s(gsheet.updated))])])]}}])})}
+var Showvue_type_template_id_7b327c82_lang_html_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/Show.vue?vue&type=template&id=738a8c36&lang=html&
+// CONCATENATED MODULE: ./src/views/Show.vue?vue&type=template&id=7b327c82&lang=html&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/Show.vue?vue&type=script&lang=js&
+//
+//
 //
 //
 //
@@ -5576,8 +5578,8 @@ var Showvue_type_template_id_738a8c36_lang_html_staticRenderFns = []
 
 var Show_component = normalizeComponent(
   views_Showvue_type_script_lang_js_,
-  Showvue_type_template_id_738a8c36_lang_html_render,
-  Showvue_type_template_id_738a8c36_lang_html_staticRenderFns,
+  Showvue_type_template_id_7b327c82_lang_html_render,
+  Showvue_type_template_id_7b327c82_lang_html_staticRenderFns,
   false,
   null,
   null,
