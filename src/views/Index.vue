@@ -1,26 +1,44 @@
 <template>
-  <g-sheet v-slot="{ gsheet }" :sheet-id="sheetId" :fields="fields">
+  <g-sheet @success="dataReceived" v-slot="{ gsheet }" :sheet-id="sheetId" :fields="fields">
 
-    <h3 class="text-capitalize">
-      {{ $route.name }} Senior Center Events
-    </h3>
+    <div v-if="gsheet.loading" class="h3 text-center">
+      Loading...
+    </div>
 
-    <ul>
-      <li v-for="x in locations(gsheet.instances)" :key="x.guid">
-        <router-link :to="`${$route.path}/${x.guid}`">
-          {{ x.center }}
-        </router-link>
-      </li>
-    </ul>
+    <template v-else>
+      <h2>
+        {{ title }}
+      </h2>
+
+      <router-view></router-view>
+
+      <ul>
+        <li v-for="x in locations" :key="x.guid">
+          <router-link :to="`/${routeName}/${x.guid}`">
+            {{ x.center }}
+          </router-link>
+        </li>
+      </ul>
+    </template>
 
   </g-sheet>
 </template>
 
 <script>
 import gSheet from '../mixins/googleSheet'
+import _uniqBy from 'lodash.uniqby'
 
 export default {
   name: 'index',
-  mixins: [gSheet]
+  mixins: [gSheet],
+  props: ['title', 'routeName'],
+  data: () => ({
+    locations: []
+  }),
+  methods: {
+    dataReceived (data) {
+      this.locations = _uniqBy(data.instances, 'guid')
+    }
+  }
 }
 </script>

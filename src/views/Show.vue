@@ -1,11 +1,9 @@
 <template lang="html">
-  <g-sheet v-slot="{ gsheet }" :sheet-id="sheetId" :fields="fields">
-    <h3 class="text-capitalize">
-      <template v-if="filteredInstances(gsheet.instances).length">
-        {{ filteredInstances(gsheet.instances)[0].center }}
-      </template>
-
-      {{ $route.name }}
+  <div v-if="activeCenter">
+    <h3>
+      <a :href="activeCenterLink">
+        {{ activeCenter.center }} Senior Center
+      </a>
     </h3>
 
     <div class="table-responsive">
@@ -20,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(model, i) in filteredInstances(gsheet.instances)" :key="i">
+          <tr v-for="(model, i) in instances" :key="i">
             <td class="text-nowrap"><strong>{{ model.day }}</strong></td>
             <td class="text-nowrap">{{ model.starttime }}</td>
             <td class="text-nowrap">{{ model.endtime }}</td>
@@ -31,15 +29,26 @@
       </table>
     </div>
 
-    <em>Last Updated: <small>{{ gsheet.updated }}</small></em>
-  </g-sheet>
+    <em>Last Updated: <small>{{ $parent.updated }}</small></em>
+
+    <hr>
+  </div>
 </template>
 
 <script>
-import gSheet from '../mixins/googleSheet'
-
 export default {
   name: 'show',
-  mixins: [gSheet]
+  computed: {
+    instances () {
+      return this.$parent.instances.filter(x => x.guid == this.$route.params.id)
+    },
+    activeCenter () {
+      return this.instances[0]
+    },
+    activeCenterLink () {
+      let id = this.activeCenter.guid.replace(/[^a-z0-9]/gi,'')
+      return `https://www.hillsboroughcounty.org/~/link.aspx?_id=${id}`
+    }
+  }
 }
 </script>

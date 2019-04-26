@@ -20,27 +20,27 @@ export default new Router({
     },
     {
       path: '/special',
-      name: 'Special',
+      name: 'special',
       component: Index,
-      props: { sheetId: specialSheetId }
+      props: { sheetId: specialSheetId, routeName: 'special', title: 'Special Senior Center Events' },
+      children: [{
+        path: ':id',
+        name: 'specialEvents',
+        component: Show,
+        props: true
+      }]
     },
     {
       path: '/ongoing',
-      name: 'Ongoing',
+      name: 'ongoing',
       component: Index,
-      props: { sheetId: ongoingSheetId }
-    },
-    {
-      path: '/special/:id',
-      name: 'Special Events',
-      component: Show,
-      props: { sheetId: specialSheetId }
-    },
-    {
-      path: '/ongoing/:id',
-      name: 'Ongoing Events',
-      component: Show,
-      props: { sheetId: ongoingSheetId }
-    },
+      props: { sheetId: ongoingSheetId, routeName: 'ongoing', title: 'Ongoing Senior Center Events' },
+      children: [{
+        path: ':id',
+        name: 'ongoingEvents',
+        component: Show,
+        props: true
+      }]
+    }
   ]
 })
