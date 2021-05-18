@@ -1,26 +1,23 @@
 {
-  "name": "hc-senior-center-events",
-  "version": "0.1.0",
-  "private": true,
+  "name": "hc-vite-template",
+  "version": "0.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name HcSeniorCenterEvents --formats umd,umd-min",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "@hcflgov/vue-google-sheet-model": "^1.1.0",
-    "core-js": "^2.6.5",
-    "lodash.uniqby": "^4.7.0",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.3"
+    "bootstrap": "^5.0.0-beta3",
+    "iframe-resizer": "^4.3.1",
+    "vue": "^3.0.5"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.6.0",
-    "@vue/cli-plugin-eslint": "^3.6.0",
-    "@vue/cli-service": "^3.6.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.5.21"
+    "@vitejs/plugin-vue": "^1.2.1",
+    "@vue/compiler-sfc": "^3.0.5",
+    "eslint": "^7.24.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "sass": "^1.32.8",
+    "vite": "^2.1.5"
   }
 }

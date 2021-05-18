@@ -1,8 +1,6 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
+// import 'bootstrap/dist/js/bootstrap.bundle'
+// import 'iframe-resizer/js/iframeResizer.contentWindow'
 
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
+createApp(App).mount('#app')
