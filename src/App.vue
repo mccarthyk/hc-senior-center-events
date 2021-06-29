@@ -1,5 +1,5 @@
 <template>
-  <main class="container py-5">
+  <main class="container-fluid py-3">
     <router-view />
   </main>
 </template>
