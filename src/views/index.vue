@@ -22,6 +22,7 @@
           <td>
             <router-link
               :title="`${fields.name} Events`"
+              :aria-label="`${fields.name} Events`"
               target="_self"
               :to="{
                 name: 'Location',
@@ -36,11 +37,9 @@
           <td>
             <a
               :title="`${fields.name} Web Page`"
+              :aria-label="`${fields.name} Web Page`"
               target="_top"
-              :href="`https://www.hillsboroughcounty.org/~/link.aspx?_id=${fields.GUID.replace(
-                /[^a-z0-9]/gi,
-                ''
-              )}`"
+              :href="fields.url"
             >
               View Location's Web Page</a
             >
