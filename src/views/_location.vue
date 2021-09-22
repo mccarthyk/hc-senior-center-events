@@ -50,14 +50,7 @@
               </span>
 
               <span v-if="fields.Date">
-                {{
-                  new Date(fields.Date).toLocaleDateString('en-US', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })
-                }}
+                {{ dateFormat(fields.Date) }}
               </span>
 
               <br />
@@ -86,6 +79,16 @@
 import { location, fetchLocation } from '../lib/locations'
 import { events, fetchEvents } from '../lib/events'
 
+const dateFormat = (dateStr) => {
+  const [y, m, d] = dateStr.split('-')
+  return new Date(y, m - 1, d).toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
+
 export default {
   props: {
     sitecoreItemId: String,
@@ -95,7 +98,7 @@ export default {
     fetchLocation(props.sitecoreItemId)
     fetchEvents(props.sitecoreItemId)
 
-    return { location, events }
+    return { location, events, dateFormat }
   },
 }
 </script>
