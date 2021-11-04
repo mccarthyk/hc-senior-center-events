@@ -12,8 +12,8 @@ export async function fetchEvents(sitecoreItemId) {
   try {
     const { data } = await airtable.get(`/events`, {
       params: {
-        filterByFormula: `AND({Published}, '${sitecoreItemId}' = ARRAYJOIN({LocationGUID}))`,
-        view: 'AppView',
+        filterByFormula: `AND({Published}, FIND('${sitecoreItemId}', ARRAYJOIN({LocationGUID})))`,
+        view: import.meta.env.DEV ? 'DevView' : 'AppView',
       },
     })
 

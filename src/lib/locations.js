@@ -12,7 +12,7 @@ export async function fetchLocations() {
   try {
     const { data } = await airtable.get(`/locations`, {
       params: {
-        view: 'AppView',
+        view: import.meta.env.DEV ? 'DevView' : 'AppView',
       },
     })
     locations.data = data.records
@@ -36,7 +36,7 @@ export async function fetchLocation(sitecoreItemId) {
     const { data } = await airtable.get(`/locations`, {
       params: {
         filterByFormula: `'${sitecoreItemId}' = {GUID}`,
-        view: 'AppView',
+        view: import.meta.env.DEV ? 'DevView' : 'AppView',
       },
     })
     location.data = data.records[0]
