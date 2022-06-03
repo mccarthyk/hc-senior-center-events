@@ -1,18 +1,58 @@
+<script setup>
+import { location, fetchLocation } from '../lib/locations'
+import { events, fetchEvents, fullCalEvents } from '../lib/events'
+
+import { useRoute, useRouter } from 'vue-router'
+// import { Tooltip } from 'bootstrap'
+
+import '@fullcalendar/core/vdom' // solves problem with Vite
+import FullCalendar from '@fullcalendar/vue3'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import adaptivePlugin from '@fullcalendar/adaptive'
+
+const router = useRouter()
+const route = useRoute()
+
+const props = defineProps({
+  sitecoreItemId: String,
+})
+
+fetchLocation(props.sitecoreItemId)
+
+const calendarOptions = {
+  plugins: [dayGridPlugin, adaptivePlugin],
+  initialView: 'dayGridMonth',
+  height: 'auto',
+
+  events: async () => {
+    await fetchEvents(props.sitecoreItemId)
+    return fullCalEvents.value
+  },
+
+  // eventDidMount: function ({ el, event }) {
+  //   new Tooltip(el, {
+  //     title: event.title,
+  //     placement: 'top',
+  //     trigger: 'hover',
+  //     container: 'body',
+  //   })
+  // },
+
+  eventClick: function ({ event }) {
+    router.push({
+      name: 'Location',
+      params: { sitecoreItemId: props.sitecoreItemId },
+      hash: `#${event.id}`,
+      query: route.query,
+    })
+  },
+}
+</script>
+
 <template>
-  <nav v-if="$route.query.index" aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="#">Senior Center Events</a>
-      </li>
-      <li
-        v-if="location.data"
-        class="breadcrumb-item active"
-        aria-current="page"
-      >
-        {{ location.data.fields?.name }}
-      </li>
-    </ol>
-  </nav>
+  <h1 v-if="location.data">{{ location.data.fields?.name }} Events</h1>
+
+  <FullCalendar :options="calendarOptions" />
 
   <div v-if="events.loading" class="text-center my-5">
     <div class="spinner-border" role="status">
@@ -23,7 +63,12 @@
   <div v-else-if="events.data.length">
     <h1 v-if="location.data">{{ location.data.fields?.name }} Events</h1>
 
-    <section v-for="{ id, fields } in events.data" :key="id" class="card my-3">
+    <section
+      v-for="{ id, fields } in events.data"
+      :key="id"
+      :id="id"
+      class="card my-3"
+    >
       <div class="card-body">
         <dl class="row">
           <!--  -->
@@ -75,30 +120,8 @@
   </div>
 </template>
 
-<script>
-import { location, fetchLocation } from '../lib/locations'
-import { events, fetchEvents } from '../lib/events'
-
-const dateFormat = (dateStr) => {
-  const [y, m, d] = dateStr.split('-')
-  return new Date(y, m - 1, d).toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+<style>
+a:not([href]) {
+  text-decoration: none;
 }
-
-export default {
-  props: {
-    sitecoreItemId: String,
-  },
-
-  setup(props) {
-    fetchLocation(props.sitecoreItemId)
-    fetchEvents(props.sitecoreItemId)
-
-    return { location, events, dateFormat }
-  },
-}
-</script>
+</style>
